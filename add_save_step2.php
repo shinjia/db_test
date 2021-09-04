@@ -7,7 +7,7 @@ $sqlstr = "INSERT INTO person(usercode, username, address, birthday, height, wei
            VALUES('102', 'Bruce', 'Taichung', '2010-4-9', '180', '70', 'ok') ";
 
 // 執行SQL
-$result = @mysqli_query($link, $sqlstr) or die('Error in SQL Query');
+$result = @mysqli_query($link, $sqlstr)
 if($result)
 {
    echo 'Success...';

@@ -2,8 +2,7 @@
 include 'config.php';
 
 // 連接資料庫
-$link = @mysqli_connect(DB_SERVERIP, DB_USERNAME, DB_PASSWORD, DB_DATABASE) or die(ERROR_CONNECT);
-if(defined('SET_CHARACTER')) mysqli_query($link, SET_CHARACTER) or die(ERROR_CHARACTER);
+$link = db_open();
 
 // 寫出 SQL 語法 
 $sqlstr = "INSERT INTO person(usercode, username, address, birthday, height, weight, remark) 

@@ -14,8 +14,7 @@ $weight   = isset($_POST['weight'])  ? $_POST['weight']   : 0;
 $remark   = isset($_POST['remark'])  ? $_POST['remark']   : '';
 
 // 連接資料庫
-@$link = mysqli_connect(DB_SERVERIP, DB_USERNAME, DB_PASSWORD, DB_DATABASE) or die(ERROR_CONNECT);
-if(defined('SET_CHARACTER')) mysqli_query($link, SET_CHARACTER) or die(ERROR_CHARACTER);
+$link = db_open();
 
 
 // 參考一：最原始參考，直接寫出所有的值 (注意文字和數字的差異)
