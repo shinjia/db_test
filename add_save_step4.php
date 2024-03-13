@@ -5,13 +5,13 @@ if(!isset($_POST['username')) die('Cannot execute this program directly.');
 
 
 // 接受外部表單傳入之變數
-$usercode = isset($_POST['usercode'])? $_POST['usercode'] : '';
-$username = isset($_POST['username'])? $_POST['username'] : '';
-$address  = isset($_POST['address']) ? $_POST['address']  : '';
-$birthday = isset($_POST['birthday'])? $_POST['birthday'] : '';
-$height   = isset($_POST['height'])  ? $_POST['height']   : 0;
-$weight   = isset($_POST['weight'])  ? $_POST['weight']   : 0;
-$remark   = isset($_POST['remark'])  ? $_POST['remark']   : '';
+$usercode = $_POST['usercode'] ?? '';
+$username = $_POST['username'] ?? '';
+$address  = $_POST['address']  ?? '';
+$birthday = $_POST['birthday'] ?? '';
+$height   = $_POST['height']   ?? 0;
+$weight   = $_POST['weight']   ?? 0;
+$remark   = $_POST['remark']   ?? '';
 
 // 連接資料庫
 $link = db_open();
@@ -32,10 +32,10 @@ $sqlstr = "INSERT INTO person(usercode, username, address, birthday, height, wei
           '" . $usercode . "', 
           '" . $username . "', 
           '" . $address  . "', 
-				  '" . $birthday . "', 
-				   " . $height   . " , 
-				   " . $weight   . " ,
-          '" . $remark   . "') "; 
+         '" . $birthday . "', 
+         " . $height   . " , 
+         " . $weight   . " ,
+         '" . $remark   . "') "; 
 
 
 // 參考四：各列均採完整敘述 (標示清楚且易於修改及擴充)
@@ -51,12 +51,10 @@ $sqlstr .= "'" . trim($remark)   . "') "; // 注意：最後一個欄位之後�
 
 // 執行SQL
 $result = @mysqli_query($link, $sqlstr) or die(ERROR_QUERY);
-if($result)
-{
+if($result) {
    echo 'Success...';
 }
-else
-{
+else {
    echo 'Fail...<br />';
    echo mysqli_error() . '<br />' . $sqlstr;  // 偵錯用
 }

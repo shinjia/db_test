@@ -10,12 +10,10 @@ $sqlstr = "INSERT INTO person(usercode, username, address, birthday, height, wei
 
 // 執行SQL
 $result = @mysqli_query($link, $sqlstr) or die(ERROR_QUERY);
-if($result)
-{
+if($result) {
    echo 'Success...';
 }
-else
-{
+else {
    echo 'Fail...<br />';
    echo mysqli_error($link) . '<br />' . $sqlstr;  // 偵錯用
 }
